@@ -161,6 +161,16 @@ node *delete_val(node *start, char data[])
 
     if(strcmp(data,start->data)==0)
     {
+
+        if(start->next==start)
+        {
+            puts(start->data);
+        printf(" deleted \n");
+        start=NULL;
+        return start;
+
+        }
+
         temp=start;
         for(temp=start->next;temp->next!=start;temp=temp->next);
         temp->next=start->next;
@@ -305,7 +315,7 @@ node *sort(node *start)
     node *temp=NULL;
     temp=create();
     temp->data=malloc(sizeof(char)*20);
-    strcpy(temp->data,"aaaaaaaaaaaaaaaaa");
+    strcpy(temp->data,"\0");
     temp->next=temp;
     node *temp2;
     temp2=start;
