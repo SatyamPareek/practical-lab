@@ -1,18 +1,20 @@
-struct Nodet
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node
 {
-    struct Nodet *lchild;
-    struct Nodet *rchild;
+    struct node *lchild;
+    struct node *rchild;
     int data;
 
 };
-
-typedef struct Nodet Nodet;
+typedef struct node node;
 #include"queue.h"
-Nodet *root =NULL;
-Nodet* alloc()
+node *root =NULL;
+node* alloc()
 {
-    Nodet *newnode;
-    newnode=malloc(sizeof(Nodet));
+    node *newnode;
+    newnode=malloc(sizeof(node));
     newnode->lchild=newnode->rchild=NULL;
     return newnode;
 
@@ -20,7 +22,7 @@ Nodet* alloc()
 
 void createtree()
 {
-    Nodet *t,*p;
+    node *t,*p;
     int val;
     queue q;
     printf("Enter the value of the root");
@@ -59,7 +61,7 @@ void createtree()
 
 
 
-void preorder(Nodet *p)
+void preorder(node *p)
 {
 
     if(p!=NULL)
@@ -70,7 +72,7 @@ void preorder(Nodet *p)
         preorder(p->rchild);
     }
 }
-void postorder(Nodet *p)
+void postorder(node *p)
 {
 
     if(p!=NULL)
@@ -80,7 +82,7 @@ void postorder(Nodet *p)
         printf("%d ",p->data);
     }
 }
-void inorder(Nodet *p)
+void inorder(node *p)
 {
 
     if(p!=NULL)
@@ -90,50 +92,15 @@ void inorder(Nodet *p)
         inorder(p->rchild);
     }
 }
-void conversepost(Nodet *p)
-{
-     if(p!=NULL)
-    {
-        printf("%d ",p->data);
-        conversepost(p->rchild);
-        conversepost(p->lchild);
-    }
-
-}
-void levelorder(Nodet *p)
-{
-
-    queue q;
-    create(&q,100);
-    printf("%d ",p->data);
-    enque(&q,p);
-    while(!isemptyque(q))
-    {
-        p=deque(&q);
-        if(p->lchild)
-        {
-            printf("%d ",p->lchild->data);
-            enque(&q,p->lchild);
-        }
-        if(p->rchild)
-        {
-            printf("%d ",p->rchild->data);
-            enque(&q,p->rchild);
-        }
-
-
-    }
-
-
-
-}
 
 int main()
 {
     createtree();
-    levelorder(root);
-
-
-
+    printf("\n inorder traversal of the following tree ");
+    inorder(root);
+    printf("\n preorder traversal of the following tree ");
+    preorder(root);
+    printf("\n postorder traversal of the following tree ");
+    postorder(root);
 
 }

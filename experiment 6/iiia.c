@@ -1,110 +1,83 @@
-#include<stdio.h>
 #include<stdlib.h>
-
 struct node
 {
+    struct node *lchild;
+    struct node *rchild;
     int data;
-    struct node *next;
-};
+
+}*root=NULL;
 typedef struct node node;
-
-
-
-node *create()
+#include"queue.h"
+void createtree()
 {
-    node *newnode=(node*) malloc(sizeof(node));
-    newnode->next=NULL;
-}
-node *enque(node * head)
-{   node *start;
-    start=head;
-    node *newnode=create();
-    printf("Enter the data: ");
-    scanf("%d",&newnode->data);
-
-    if(head==NULL)
-        head=newnode;
-    else
+    node *p,*t;
+    int x;
+    queue q;
+    create(&q,100);
+    printf("Enter the root value");
+    scanf("%d",&x);
+    root=(node *)malloc(sizeof(node));
+    root->data=x;
+    root->lchild=root->rchild=NULL;
+    enque(&q,root);
+    while(!isEmpty(q))
     {
-        for(start=head;start->next!=NULL;start=start->next);
-            start->next=newnode;
-
-    }
-    return head;
-}
-
-void display( node *head)
-{
-    node *temp;
-    printf("\n your list is : \n");
-    if(head==NULL)
-        printf("your list is empty\n");
-    else
-    {
-        for(temp=head;temp!=NULL;temp=temp->next)
+        p=deque(&q);
+        printf("Enter the left child of %d :",p->data);
+        scanf("%d",&x);
+        if(x!=-1)
         {
-            printf(" %d ",temp->data);
-        }
-        printf("\n");
-    }
+            t=(node *)malloc(sizeof(node));
+            t->data=x;
+            t->lchild=t->rchild=NULL;
+            p->lchild=t;
+            enque(&q,t);
 
-}
-node *deque(node *head)
-{
-    node *temp;
-    temp=head;
-    if(head)
-    {
-        if(head->next==NULL)
+        }
+       printf("Enter the right child of %d :",p->data);
+        scanf("%d",&x);
+        if(x!=-1)
         {
-            printf("%d deleted",head->data);
-            head=NULL;
+            t=(node *)malloc(sizeof(node));
+            t->data=x;
+            t->rchild=t->lchild=NULL;
+            p->rchild=t;
+            enque(&q,t);
 
-            return head;
         }
-
-        head=head->next;
-        printf("%d deleted",temp->data);
-        free(temp);
-        return head;
     }
-    else
-        printf("list empty\n");
 
 }
+void levelorder(node *p)
+{
+
+    queue q;
+    create(&q,100);
+    printf("%d ",p->data);
+    enque(&q,p);
+    while(!isEmpty(q))
+    {
+        p=deque(&q);
+        if(p->lchild)
+        {
+            printf("%d ",p->lchild->data);
+            enque(&q,p->lchild);
+        }
+        if(p->rchild)
+        {
+            printf("%d ",p->rchild->data);
+            enque(&q,p->rchild);
+        }
+
+
+    }
 
 
 
-
+}
 int main()
 {
-    int option;
-    node  *q=NULL;
-
-    do{int data;
-        printf("\n\n1. enque\n2. deque\n3. display \n4. exit\nEnter the option : ");
-        scanf("%d",&option);
-        switch (option)
-        {
-        case 1 :
-//            printf("Enter the value: ");
-//        scanf("%d",&data);
-        q=enque(q);
-
-            /* code */
-            break;
-        case 2:
-        q=deque(q);
-        break;
-        case 3:
-        display(q);
-        break;
-        case 4:
-        exit(0);
-        break;
-
-        default:printf("invalid option");
-            break;
-        }
-    }while(1);
+    createtree();
+    printf("the level order of the tree is : ");
+    levelorder(root);
 }

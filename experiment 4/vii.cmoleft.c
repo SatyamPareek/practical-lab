@@ -1,5 +1,5 @@
 #include<stdio.h>
-//c matrix with non zero value in first row first col and last row
+//z matrix with non zero value in first row , RIGHT DIAGONAL and last row
 
 struct Matrix
 {
@@ -22,7 +22,7 @@ void inputRMO(struct Matrix *l )
                 l->A[j-1]=val;
             else if(i==l->n)
                 l->A[(2*l->n)-2 +j-1]=val;
-            else if(j==1)
+            else if(i+j==l->n+1)
                 l->A[l->n +i-2]=val;
 
 
@@ -31,27 +31,7 @@ void inputRMO(struct Matrix *l )
     }
 }
 
-void inputCMO(struct Matrix *l )
-{
-    int i,j,m;
-    int val;
-    for(i=1;i<=l->n;i++)
-    {
-        for(j=1;j<=l->n;j++)
-        {
-            scanf("%d",&val);
-            if(j==1)
-                l->A[i-1]=val;
-            else if(i==1)
-                l->A[ l->n + 2*(j-2) ]=val;
-            else if(i==l->n)
-                l->A[(l->n)+ 2*(j-2)+1]=val;
 
-
-        }
-
-    }
-}
 
 
 void displayRMO(struct Matrix m)
@@ -66,7 +46,7 @@ void displayRMO(struct Matrix m)
                 printf("%d  ",m.A[j-1]);
             else if(i==m.n)
                 printf("%d  ",m.A[(2*m.n)-2 +j-1]);
-            else if(j==1)
+            else if(i+j==m.n+1)
                 printf("%d  ",m.A[m.n +i-2]);
             else
                 printf("0  ");
@@ -74,26 +54,7 @@ void displayRMO(struct Matrix m)
         printf("\n");
     }
 }
-void displayCMO(struct Matrix m)
-{
 
-    int i,j;
-    for(i=1;i<=m.n;i++)
-    {
-        for(j=1;j<=m.n;j++)
-        {
-            if(j==1)
-                printf("%d  ",m.A[i-1]);
-            else if(i==1)
-                printf("%d  ",m.A[(m.n)+ 2*(j-2)]);
-            else if(i==m.n)
-                printf("%d  ",m.A[(m.n)+ 2*(j-2)+1]);
-            else
-                printf("0  ");
-        }
-        printf("\n");
-    }
-}
 
 int main()
 {
@@ -118,13 +79,13 @@ int main()
     }
     else
     {
-        printf("\n CMO\n");
-        inputCMO(&m);
-        displayCMO(m);
-        printf("\n\n the CMO form of the following matrix is : \n ");
-        int i;
-        for(i=0;i<(3*m.n-2);i++)
-            printf("%d ",m.A[i]);
+//        printf("\n CMO\n");
+//        inputCMO(&m);
+//        displayCMO(m);
+//        printf("\n\n the CMO form of the following matrix is : \n ");
+//        int i;
+//        for(i=0;i<(3*m.n-2);i++)
+//            printf("%d ",m.A[i]);
 
     }
 
