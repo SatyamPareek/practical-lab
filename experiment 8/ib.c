@@ -72,6 +72,17 @@ void preorder(node *p)
         preorder(p->rchild);
     }
 }
+void converspreorder(node *p)
+{
+
+    if (p != NULL)
+    {
+
+        converspreorder(p->rchild);
+        converspreorder(p->lchild);
+        printf("%d ", p->data);
+    }
+}
 void postorder(node *p)
 {
 
@@ -90,6 +101,16 @@ void inorder(node *p)
         inorder(p->lchild);
         printf("%d ",p->data);
         inorder(p->rchild);
+    }
+}
+void coinorder(node *p)
+{
+
+    if (p != NULL)
+    {
+        coinorder(p->rchild);
+        printf("%d ", p->data);
+        coinorder(p->lchild);
     }
 }
 void conversepost(node *p)
@@ -114,5 +135,9 @@ int main()
     postorder(root);
     printf("\n converse postorder traversal of the following tree ");
     conversepost(root);
-
+    printf("\n converse preorder traversal of the following tree ");
+    converspreorder(root);
+    printf("\n converse inorder traversal of the following tree ");
+    coinorder(root);
+    
 }
