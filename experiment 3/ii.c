@@ -1,44 +1,51 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
+#define size 20
 int step;
-void Get(int A[],int n)
+void Get(char A[][size],int n)
 {
     int i;
+    fflush(stdin);
     for(i=0;i<n;i++)
     {
-        scanf("%d",&A[i]);
+        scanf("%s",&A[i]);
     }
 }
-void swap(int *a,int *b)
+void swap(char a[size],char b[size])
 {
-    int temp;
-    temp=*a;
-    *a=*b;
-    *b=temp;
+    char temp[size];
+    strcpy(temp,a);
+    strcpy(a, b);
+    strcpy(b,temp);
+    
 }
-void put(int A[],int n)
+void put(char A[][size],int n)
 {
     int i;
     printf("your list is \n");
     for(i=0;i<n;i++)
     {
-        printf("%d ",A[i]);
+        printf("%s \n",A[i]);
     }
     printf("\n");
 }
-void insertion(int A[],int n)
+void insertion(char A[][size],int n)
 {
-    int i,j,x;
+    int i,j;
+    char str[size];
     for(i=1;i<n;i++)
     {
         j=i-1;
-        x=A[i];
-        while(j>-1&&A[j]>x)
+        
+        strcpy(str,A[i]);
+        
+        while(j>-1&&strcmp(A[j],str)>0)
         {
-            A[j+1]=A[j];
+            strcpy(A[j+1],A[j]);
             j--;
         }
-        A[j+1]=x;
+        strcpy(A[j+1],str);
         if(step==1)
         {
             printf("\npass %d\n",i);
@@ -46,17 +53,17 @@ void insertion(int A[],int n)
         }
     }
 }
-void SelectionSort(int A[],int n)
+void SelectionSort(char A[][size],int n)
 {
     int i,j,k;
     for(i=0;i<n-1;i++)
     {
         for(j=k=i;j<n;j++)
         {
-            if(A[j]<A[k])
+            if(strcmp(A[j],A[k])<0)
                 k=j;
         }
-       swap(&A[i],&A[k]);
+       swap(A[i],A[k]);
        if(step==1)
         {
             printf("\npass %d\n",i);
@@ -66,11 +73,11 @@ void SelectionSort(int A[],int n)
 }
 int main()
 {
-    int *arr;
+    
     int n,choice;
     printf("Enter the no of the elements in the array");
     scanf("%d",&n);
-    arr=malloc(sizeof(int)*n);
+    char arr[size][n];
     Get(arr,n);
     while(1)
     {

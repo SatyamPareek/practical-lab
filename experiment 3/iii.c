@@ -1,32 +1,33 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<string.h>
 
-void Get(int A[],int n)
+void Get(char A[],int n)
 {
     int i;
     for(i=0;i<n;i++)
     {
-        scanf("%d",&A[i]);
+        scanf("%c",&A[i]);
     }
 }
-void swap(int *a,int *b)
+void swap(char *a,char *b)
 {
-    int temp;
+    char temp;
     temp=*a;
     *a=*b;
     *b=temp;
 }
-void put(int A[],int n)
+void put(char A[],int n)
 {
     int i;
     printf("your list is \n");
     for(i=0;i<n;i++)
     {
-        printf("%d ",A[i]);
+        printf("%c ",A[i]);
     }
     printf("\n");
 }
-void QuickSort(int A[],int min, int max)
+void QuickSort(char A[],int min, int max)
 {
 
     int i,l,h,mid,temp;
@@ -57,21 +58,13 @@ void QuickSort(int A[],int min, int max)
 }
 int main()
 {
-    int *arr;
+    char arr[100];
     int n;
-    printf("Enter the no of the elements in the array");
-    scanf("%d",&n);
-
-    arr=malloc(sizeof(int)*n);
-    Get(arr,n);
+    printf("Enter the string arrayfor sorting : ");
+    scanf("%s",arr);
+    n=strlen(arr);
     QuickSort(arr,0,n-1);
     printf("Array after sorting is : \n");
     put(arr,n);
-
-
-
-
-
-
 return 0;
 }
