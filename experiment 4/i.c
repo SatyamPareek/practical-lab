@@ -1,8 +1,7 @@
 //i*(i-1)/2 +(i+j-n-1)
-
-
 //lower right triangular matrix
-
+#include<stdio.h>
+#include<stdlib.h>
 struct Matrix
 {
 
@@ -16,6 +15,8 @@ void inputLRRMO(struct Matrix *l )
 {
     int i,j,m;
     int val;
+
+    printf("Enter the input in normal form\n");
     for(i=1;i<=l->n;i++)
     {
         for(j=1;j<=l->n;j++)
@@ -23,6 +24,7 @@ void inputLRRMO(struct Matrix *l )
             scanf("%d",&val);
             if(i+j>l->n)
                 l->A[i*(i-1)/2 +(i+j-l->n-1)]=val;
+
 
         }
 
@@ -32,6 +34,8 @@ void inputLRCMO(struct Matrix *l )
 {
     int i,j,m;
     int val;
+
+    printf("Enter the input in normal form\n");
     for(i=1;i<=l->n;i++)
     {
         for(j=1;j<=l->n;j++)
@@ -39,6 +43,8 @@ void inputLRCMO(struct Matrix *l )
             scanf("%d",&val);
             if(i+j>l->n)
                 l->A[j*(j-1)/2 +(j+i-l->n-1)]=val;
+
+
 
         }
 
@@ -80,6 +86,7 @@ void displayLRCMO(struct Matrix m)
 int main()
 {
     struct Matrix m;
+    printf("LOWER RIGHT TRIANGULAR MATRTX\n");
     printf("enter the value of n ie. size of matrix: ");
     scanf("%d",&m.n);
     m.A=malloc(sizeof(int)*(m.n*(m.n+1)/2));
@@ -91,7 +98,7 @@ int main()
     if(choice==1)
     {
         printf("\n RMO\n");
-        inputLRCMO(&m);
+        inputLRRMO(&m);
         displayLRRMO(m);
 
         printf("\n\n the RMO form of the following matrix is : \n ");

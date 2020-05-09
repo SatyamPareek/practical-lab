@@ -1,5 +1,6 @@
 
 #include<stdio.h>
+#include<stdlib.h>
 //upper right  triangular matrix
 
 struct Matrix
@@ -14,6 +15,8 @@ void inputRMO(struct Matrix *l )
 {
     int i,j,m;
     int val;
+
+    printf("Enter the input in normal form\n");
     for(i=1;i<=l->n;i++)
     {
         for(j=1;j<=l->n;j++)
@@ -21,6 +24,7 @@ void inputRMO(struct Matrix *l )
             scanf("%d",&val);
             if(j-i>=0)
                 l->A[l->n*(i-1) -(i-1)*(i-2)/2 + j-i]=val;
+
 
         }
 
@@ -31,6 +35,8 @@ void inputCMO(struct Matrix *l )
 
     int i,j,m;
     int val;
+
+    printf("Enter the input in normal form\n");
     for(i=1;i<=l->n;i++)
     {
         for(j=1;j<=l->n;j++)
@@ -38,6 +44,7 @@ void inputCMO(struct Matrix *l )
             scanf("%d",&val);
             if(j-i>=0)
                 l->A[j*(j-1)/2 + i-1]=val;
+
 
         }
 
@@ -79,6 +86,7 @@ void displayCMO(struct Matrix m)
 int main()
 {
     struct Matrix m;
+    printf("UPPER RIGHT TRIANGULAR MATRIX\n");
     printf("enter the value of n ie. size of matrix: ");
     scanf("%d",&m.n);
 

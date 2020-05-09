@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 //lower left triangular matrix
 
 struct Matrix
@@ -11,6 +12,8 @@ typedef struct Matrix Matrix;
 
 void inputRMO(struct Matrix *l )
 {
+
+    printf("Enter the input in normal form: \n");
     int i,j,m;
     int val;
     for(i=1;i<=l->n;i++)
@@ -26,6 +29,7 @@ void inputRMO(struct Matrix *l )
 }
 void inputCMO(struct Matrix *l )
 {
+    printf("Enter the input in normal form: \n");
     int i,j,m;
     int val;
     for(i=1;i<=l->n;i++)
@@ -74,6 +78,7 @@ void displayCMO(struct Matrix m)
 }
 int main()
 {
+    printf("LOWER LEFT TRIANGULAR MATRIX\n");
     struct Matrix m;
     printf("enter the value of n ie. size of matrix: ");
     scanf("%d",&m.n);

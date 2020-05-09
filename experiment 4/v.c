@@ -12,6 +12,7 @@ typedef struct Matrix Matrix;
 
 void inputRMO(struct Matrix *l )
 {
+    printf("Enter the input in normal form: \n");
     int i,j,m;
     int val;
     for(i=1;i<=l->n;i++)
@@ -29,6 +30,7 @@ void inputRMO(struct Matrix *l )
 void inputCMO(struct Matrix *l )
 {
 
+    printf("Enter the input in normal form: \n");
     int i,j,m;
     int val;
     for(i=1;i<=l->n;i++)
@@ -78,6 +80,8 @@ void displayCMO(struct Matrix m)
 }
 int main()
 {
+    printf("UPPER LEFT TRIANGULAR MATRIX: \N");
+
     struct Matrix m;
     printf("enter the value of n ie. size of matrix: ");
     scanf("%d",&m.n);
