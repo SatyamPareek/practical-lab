@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 //z matrix with non zero value in first row , RIGHT DIAGONAL and last row
 
 struct Matrix
@@ -13,6 +14,7 @@ void inputRMO(struct Matrix *l )
 {
     int i,j,m;
     int val;
+    printf("Enter the input in normal form: \n");
     for(i=1;i<=l->n;i++)
     {
         for(j=1;j<=l->n;j++)
@@ -38,6 +40,7 @@ void displayRMO(struct Matrix m)
 {
 
     int i,j;
+    printf("Enter the input in normal form: \n");
     for(i=1;i<=m.n;i++)
     {
         for(j=1;j<=m.n;j++)
@@ -58,6 +61,7 @@ void displayRMO(struct Matrix m)
 
 int main()
 {
+    printf("Z MATRIX\n");
     struct Matrix m;
     printf("enter the value of n ie. size of matrix: ");
     scanf("%d",&m.n);
@@ -77,17 +81,7 @@ int main()
         for(i=0;i<(3*m.n-2);i++)
             printf("%d ",m.A[i]);
     }
-    else
-    {
-//        printf("\n CMO\n");
-//        inputCMO(&m);
-//        displayCMO(m);
-//        printf("\n\n the CMO form of the following matrix is : \n ");
-//        int i;
-//        for(i=0;i<(3*m.n-2);i++)
-//            printf("%d ",m.A[i]);
 
-    }
 
 
 
