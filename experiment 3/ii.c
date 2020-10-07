@@ -101,19 +101,7 @@ int main()
             SelectionSort(arr,n);
             printf("Array after sorting is : \n");
             put(arr,n);
-
-
         }
-
-
-
-
-
-
-
     }
-
-
-
 return 0;
 }

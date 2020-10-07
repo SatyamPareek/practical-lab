@@ -26,5 +26,7 @@ int main()
     printf("Enter the string to check: ");
     gets(string);
     str(string);
+    cin.get();
+    return 0;
 
 }
